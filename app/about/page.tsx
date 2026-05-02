@@ -9,7 +9,7 @@ export default function AboutPage() {
           <span className="text-primary">Me</span>
         </h1>
         <p className="text-muted-foreground text-center mb-16 max-w-xl mx-auto">
-          My background, education, and experiences that have shaped who I am today.
+          A brief overview of my professional journey, academic background, and technical skills.
         </p>
         
         <CVSection />
