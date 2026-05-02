@@ -80,31 +80,37 @@ export function ProjectTimeline() {
     const container = scrollContainerRef.current
     if (!container) return
 
+    let ticking = false
+
     const handleScroll = () => {
-      const containerRect = container.getBoundingClientRect()
-      const containerCenter = containerRect.height / 2
+      if (ticking) return
+      ticking = true
 
-      let closestIndex = 0
-      let closestDistance = Infinity
+      requestAnimationFrame(() => {
+        const containerRect = container.getBoundingClientRect()
+        const containerCenter = containerRect.height / 2
 
-      cardRefs.current.forEach((card, index) => {
-        if (!card) return
-        const cardRect = card.getBoundingClientRect()
-        const cardCenterRelative = cardRect.top - containerRect.top + cardRect.height / 2
-        const distance = Math.abs(containerCenter - cardCenterRelative)
-        
-        if (distance < closestDistance) {
-          closestDistance = distance
-          closestIndex = index
-        }
+        let closestIndex = 0
+        let closestDistance = Infinity
+
+        cardRefs.current.forEach((card, index) => {
+          if (!card) return
+          const cardRect = card.getBoundingClientRect()
+          const cardCenterRelative = cardRect.top - containerRect.top + cardRect.height / 2
+          const distance = Math.abs(containerCenter - cardCenterRelative)
+          
+          if (distance < closestDistance) {
+            closestDistance = distance
+            closestIndex = index
+          }
+        })
+
+        setActiveIndex(closestIndex)
+        ticking = false
       })
-
-      setActiveIndex(closestIndex)
     }
 
     container.addEventListener("scroll", handleScroll)
-    handleScroll()
-    
     return () => container.removeEventListener("scroll", handleScroll)
   }, [])
 
