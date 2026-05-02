@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { Github, Globe, ChevronDown } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 interface Project {
@@ -11,70 +12,62 @@ interface Project {
   description: string
   longDescription?: string
   logoText?: string
+  logoImage?: string
   github?: string
   website?: string
 }
 
 const projects: Project[] = [
   {
+    year: "2026",
+    name: "UrbanStack",
+    description: "The Urban Mobility Revolution",
+    longDescription: "Lets cities privately simulate how a mobility solution performs in their city before any procurement begins. Instant validation with zero risk.",
+    logoImage: "/urbanstack-logo.jpg", // Changed from logoText to logoImage
+    website: "https://v0-urbanstack-landing-page.vercel.app/",
+  },
+  {
+    year: "2025",
+    name: "Meetly",
+    description: "Intelligent, gamified meeting assistant",
+    longDescription: "Transforms calendar management using AI-powered voice and text input. Automatically extracts meeting details, provides smart reminders, and rewards you for completing events through a gamified system.",
+    logoText: "ML", // Kept as Text because it's just letters
+    github: "https://github.com/paulpaulsen55/meetly",
+  },
+  {
     year: "2024",
-    name: "RailTrack Analytics",
-    description: "Data visualization platform",
-    longDescription: "Real-time analytics dashboard for railway system performance monitoring and predictive maintenance.",
-    logoText: "RTA",
-    github: "https://github.com/konradmartens/railtrack",
-    website: "https://railtrack.demo",
+    name: "ÖffiFair",
+    description: "Next-gen public transport ticketing prototype",
+    longDescription: "Calculates fares based on actual travel distance rather than traditional zone-based pricing, aiming to offer fairer and more accurate pricing for commuters.",
+    logoText: "ÖF", // Kept as Text because it's just letters
+    github: "https://github.com/Calli-ope/OeffiFair",
+  },
+  {
+    year: "2024",
+    name: "Trankly",
+    description: "Platform for train fans and travellers",
+    longDescription: "The ultimate platform for train enthusiasts and travelers to connect, track, and share their railway journeys.",
+    logoImage: "/trankly-logo.svg", // Changed from logoText to logoImage
+    github: "https://github.com/Calli-ope/trankly",
+    website: "https://trankly.vercel.app/",
+  },
+  {
+    year: "2024",
+    name: "Clickly",
+    description: "Idle web game boredom killer",
+    longDescription: "An engaging idle web game where the main goal is to collect the most emojis, upgrade stats, and climb to the top of the global leaderboard.",
+    logoImage: "/clickly-logo.svg", // Changed from logoText to logoImage
+    github: "https://github.com/OGNylux/clickly",
+    website: "https://www.clickly-idle.de/",
   },
   {
     year: "2023",
     name: "meedle.",
-    description: "Project with students",
-    longDescription: "Calculation middle point between 2 input points for easy meetup location finding.",
-    logoText: "meedle.",
-    github: "https://github.com/konradmartens/meedle",
-    website: "https://meedle.app",
-  },
-  {
-    year: "2023",
-    name: "SmartCommute",
-    description: "Mobility optimization app",
-    longDescription: "AI-powered route planning for urban commuters with real-time traffic integration.",
-    logoText: "SC",
-    github: "https://github.com/konradmartens/smartcommute",
-  },
-  {
-    year: "2022",
-    name: "Portfolio v1",
-    description: "Personal portfolio website",
-    longDescription: "First iteration of my personal portfolio showcasing projects and skills built with React.",
-    logoText: "KM",
-    github: "https://github.com/konradmartens/portfolio",
-    website: "https://v1.konradmartens.dev",
-  },
-  {
-    year: "2022",
-    name: "CodeCollab",
-    description: "Real-time collaboration tool",
-    longDescription: "Live code sharing and collaboration platform for pair programming sessions.",
-    logoText: "CC",
-    github: "https://github.com/konradmartens/codecollab",
-  },
-  {
-    year: "2021",
-    name: "Study Planner",
-    description: "University project",
-    longDescription: "A collaborative study planning tool for university students with calendar sync.",
-    logoText: "SP",
-    github: "https://github.com/konradmartens/study-planner",
-  },
-  {
-    year: "2021",
-    name: "WeatherWise",
-    description: "Weather forecasting app",
-    longDescription: "Minimal weather app with location-based forecasts and severe weather alerts.",
-    logoText: "WW",
-    github: "https://github.com/konradmartens/weatherwise",
-    website: "https://weatherwise.demo",
+    description: "Smart web app for optimal meeting points",
+    longDescription: "Developed a smart web app that suggests optimal meeting points between two locations. Designed to simplify planning for meetings, dates, or group hangouts.",
+    logoImage: "/meedle-logo.svg", 
+    github: "https://github.com/paulpaulsen55/meedle",
+    website: "https://map-meedle.de/", 
   },
 ]
 
@@ -132,7 +125,7 @@ export function ProjectTimeline() {
       {/* Scroll container */}
       <div 
         ref={scrollContainerRef}
-        className="h-full overflow-y-auto scroll-smooth scrollbar-thin"
+        className="h-full overflow-y-auto scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         style={{ scrollSnapType: "y proximity" }}
       >
         {/* Top padding to center first card */}
@@ -150,30 +143,30 @@ export function ProjectTimeline() {
               <div
                 onClick={() => scrollToCard(index)}
                 className={cn(
-                  "w-full rounded-2xl p-6 md:p-8 transition-all duration-500 cursor-pointer",
-                  "bg-[#9A9ACD] shadow-lg",
+                  "w-full rounded-2xl p-6 md:p-8 transition-all duration-500 cursor-pointer border",
+                  "bg-card text-card-foreground shadow-lg border-border/50",
                   index === activeIndex
-                    ? "opacity-100 scale-100 shadow-2xl shadow-primary/20"
+                    ? "opacity-100 scale-100 shadow-2xl shadow-primary/20 border-primary/30"
                     : "opacity-35 scale-[0.92]"
                 )}
               >
                 <div className="flex flex-col md:flex-row gap-6">
                   {/* Logo Section */}
                   <div className="flex-shrink-0">
-                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-xl bg-white/30 backdrop-blur-sm flex items-center justify-center border border-white/20">
-                      {project.logoText === "meedle." ? (
-                        <div className="flex items-center gap-1">
-                          <svg viewBox="0 0 32 32" className="w-7 h-7">
-                            <circle cx="10" cy="10" r="4" fill="#F59E0B" />
-                            <circle cx="22" cy="10" r="4" fill="#F59E0B" />
-                            <ellipse cx="16" cy="22" rx="10" ry="6" fill="#F59E0B" />
-                          </svg>
-                          <span className="text-lg md:text-xl font-bold text-[#1a1a2e]">
-                            {project.logoText}
-                          </span>
-                        </div>
+                    {/* Always apply rounded-xl so images get clipped corners too */}
+                    <div className={cn(
+                      "relative w-24 h-24 md:w-28 md:h-28 flex items-center justify-center overflow-hidden rounded-xl",
+                      !project.logoImage && "bg-muted/50 backdrop-blur-sm border border-border/50"
+                    )}>
+                      {project.logoImage ? (
+                        <Image 
+                          src={project.logoImage} 
+                          alt={`${project.name} logo`}
+                          fill
+                          className="object-contain" 
+                        />
                       ) : (
-                        <span className="text-2xl md:text-3xl font-bold text-[#1a1a2e]">
+                        <span className="text-2xl md:text-3xl font-bold text-foreground">
                           {project.logoText}
                         </span>
                       )}
@@ -182,14 +175,16 @@ export function ProjectTimeline() {
                   
                   {/* Content Section */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-xl md:text-2xl font-semibold text-[#1a1a2e] italic mb-3">
+                    <h3 className="text-xl md:text-2xl font-semibold text-card-foreground italic mb-3">
                       {project.year} - {project.name}
                     </h3>
                     
-                    <p className="text-[#1a1a2e]/90 text-sm font-medium mb-1">
+                    <p className="text-card-foreground/90 text-sm font-medium mb-1">
                       {project.description}
                     </p>
-                    <p className="text-[#1a1a2e]/70 text-sm mb-5 line-clamp-2">
+                    
+                    {/* Changed color from text-muted-foreground to text-card-foreground/80 for better contrast */}
+                    <p className="text-card-foreground/80 text-sm mb-5 leading-relaxed">
                       {project.longDescription}
                     </p>
                     
@@ -201,7 +196,7 @@ export function ProjectTimeline() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="flex items-center gap-2 text-sm text-[#1a1a2e]/70 hover:text-[#1a1a2e] transition-colors"
+                          className="flex items-center gap-2 text-sm text-card-foreground/80 hover:text-card-foreground transition-colors"
                         >
                           <Github className="w-4 h-4" />
                           <span>Code on Github</span>
@@ -213,7 +208,7 @@ export function ProjectTimeline() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="flex items-center gap-2 text-sm text-[#1a1a2e]/70 hover:text-[#1a1a2e] transition-colors"
+                          className="flex items-center gap-2 text-sm text-card-foreground/80 hover:text-card-foreground transition-colors"
                         >
                           <Globe className="w-4 h-4" />
                           <span>Visit Website</span>
