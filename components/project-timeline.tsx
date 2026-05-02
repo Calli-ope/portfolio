@@ -24,6 +24,7 @@ const projects: Project[] = [
     description: "The Urban Mobility Revolution",
     longDescription: "Lets cities privately simulate how a mobility solution performs in their city before any procurement begins. Instant validation with zero risk.",
     logoImage: "/urbanstack-logo.jpg", // Changed from logoText to logoImage
+    github: "https://github.com/Calli-ope/urbanstack",
     website: "https://v0-urbanstack-landing-page.vercel.app/",
   },
   {
