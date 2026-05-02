@@ -158,7 +158,7 @@ export function ProjectTimeline() {
               >
                 <div className="flex flex-col md:flex-row gap-6">
                   {/* Logo Section */}
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     {/* Always apply rounded-xl so images get clipped corners too */}
                     <div className={cn(
                       "relative w-24 h-24 md:w-28 md:h-28 flex items-center justify-center overflow-hidden rounded-xl",

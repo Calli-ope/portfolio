@@ -120,8 +120,8 @@ export function TravelGallery() {
             )}
           >
             {/* Thumbnail */}
-            <div className="relative aspect-[4/3] bg-muted">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
+            <div className="relative aspect-4/3 bg-muted">
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent z-10" />
               <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
                 <MapPin className="w-12 h-12 opacity-20" />
               </div>
@@ -165,7 +165,7 @@ export function TravelGallery() {
           {selectedExperience && (
             <div className="relative">
               {/* Main Image */}
-              <div className="relative aspect-[16/10] bg-muted mx-6 rounded-lg overflow-hidden">
+              <div className="relative aspect-16/10 bg-muted mx-6 rounded-lg overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
                   <div className="text-center">
                     <MapPin className="w-16 h-16 opacity-20 mx-auto mb-2" />
@@ -207,7 +207,7 @@ export function TravelGallery() {
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
                   className={cn(
-                    "flex-shrink-0 w-20 h-14 rounded-lg bg-muted overflow-hidden border-2 transition-all",
+                    "shrink-0 w-20 h-14 rounded-lg bg-muted overflow-hidden border-2 transition-all",
                     currentImageIndex === index
                       ? "border-primary"
                       : "border-transparent hover:border-primary/50"

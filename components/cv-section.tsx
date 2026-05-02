@@ -144,7 +144,7 @@ function CVEntryCard({ entry }: { entry: CVEntry }) {
               
               return (
                 <li key={index} className="text-sm text-muted-foreground flex items-start gap-2">
-                  <span className="w-1 h-1 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
                   {colonIndex !== -1 ? (
                     <span className="leading-relaxed">
                       <strong className="font-semibold text-foreground">
