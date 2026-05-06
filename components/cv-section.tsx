@@ -49,7 +49,7 @@ const education: CVEntry[] = [
 const workExperience: CVEntry[] = [
   {
     period: "Oct 2022 - Sep 2025",
-    title: "Internships at Hitachi Rail Ground Transportation Systems",
+    title: "Hitachi Rail Ground Transportation Systems",
     subtitle: "Dual Student",
     location: "Berlin, Oslo",
     details: [
@@ -64,7 +64,8 @@ const workExperience: CVEntry[] = [
   },
   {
     period: "Jul 2021",
-    title: "Workshop at Hasso Plattner Institute",
+    title: "Hasso Plattner Institute",
+    subtitle: "Workshop",
     location: "Potsdam",
     details: [
       "Development of a Website using HTML, CSS & JavaScript",
@@ -73,7 +74,8 @@ const workExperience: CVEntry[] = [
   },
   {
     period: "Nov 2018",
-    title: "Internship at T-Systems Multimedia Solutions",
+    title: "T-Systems Multimedia Solutions",
+    subtitle: "Internship",
     location: "Berlin",
     details: [
       "Machine Learning with Turi Create",
@@ -83,7 +85,8 @@ const workExperience: CVEntry[] = [
   },
   {
     period: "Jul 2018",
-    title: "Workshop at Electrical Engineering and Computer Science Laboratory (TU Berlin)",
+    title: "Electrical Engineering and Computer Science Laboratory (TU Berlin)",
+    subtitle: "Workshop",
     location: "Berlin",
     details: [
       "Implementing a Geo-App with ArcGIS"
@@ -92,7 +95,8 @@ const workExperience: CVEntry[] = [
   },
   {
     period: "Jan 2016",
-    title: "Internship at Berliner Verkehrsbetriebe (BVG)",
+    title: "Berliner Verkehrsbetriebe (BVG)",
+    subtitle: "Internship",
     location: "Berlin",
     details: [
       "Maintenance of underground trains"
