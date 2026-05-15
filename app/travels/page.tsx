@@ -1,4 +1,5 @@
 import { TravelGallery } from "@/components/travel-gallery"
+import { TravelGlobe } from "@/components/travel-globe"
 
 export default function TravelsPage() {
   return (
@@ -8,10 +9,13 @@ export default function TravelsPage() {
           <span className="text-foreground">Travel </span>
           <span className="text-primary">Experiences</span>
         </h1>
-        <p className="text-muted-foreground text-center mb-16 max-w-xl mx-auto">
+        <p className="text-muted-foreground text-center mb-10 max-w-xl mx-auto">
           Photos and highlights from my travels around the world.
         </p>
         
+        {/* Interactive 3D Globe Component */}
+        <TravelGlobe />
+
         {/* TravelGallery is kept in the code but commented out while we show Coming soon */}
         {/*
         <TravelGallery />
