@@ -37,7 +37,7 @@ const education: CVEntry[] = [
   {
     period: "Aug 2009 - Jul 2022",
     title: "Kurt Schwitters School Berlin",
-    subtitle: "Abitur (A-lavels)",
+    subtitle: "Abitur (A-levels)",
     location: "Berlin",
     details: [
       "Final Grade: 1.3",
